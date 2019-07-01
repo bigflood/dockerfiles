@@ -25,3 +25,8 @@ ENV TERM=xterm-color
 
 RUN cd /spark \
     && ./dev/make-distribution.sh --name hadoop3.1.0 --tgz -Phadoop-3.1 -Pmesos -DskipTests
+
+FROM scratch
+
+COPY --from=0 /spark/spark-2.4.3-bin-hadoop3.1.0.tgz /
+
